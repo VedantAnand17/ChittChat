@@ -6,7 +6,8 @@ const useChangePassword = () => {
 
 	const changePassword = async (oldPassword, newPassword, confirmPassword) => {
 		const success = handleInputErrors(oldPassword, newPassword, confirmPassword);
-		if (!success) return;
+		if (!success) return false;
+		
 		setLoading(true);
 		try {
 			const API = import.meta.env.VITE_API_URL || "";
@@ -22,7 +23,7 @@ const useChangePassword = () => {
 				throw new Error(data.error);
 			}
 
-			toast.success(data.message);
+			toast.success(data.message || "Password changed successfully!");
 			return true;
 		} catch (error) {
 			toast.error(error.message);

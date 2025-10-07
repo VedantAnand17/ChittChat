@@ -16,17 +16,23 @@ const ChangePassword = () => {
 			setOldPassword("");
 			setNewPassword("");
 			setConfirmPassword("");
+			
+			// Redirect to home after a short delay
+			setTimeout(() => {
+				window.location.href = "/";
+			}, 2000);
 		}
 	};
 
 	return (
-		<>
-			<h1 className='text-3xl font-semibold text-center text-gray-800 dark:text-gray-200'>
-				Change Password
-				<span className='text-blue-500'> ChitChat</span>
-			</h1>
+		<div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+			<div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
+				<h1 className='text-3xl font-semibold text-center text-gray-800 dark:text-gray-200'>
+					Change Password
+					<span className='text-blue-500'> ChitChat</span>
+				</h1>
 
-			<form onSubmit={handleSubmit} className='mt-6'>
+				<form onSubmit={handleSubmit} className='mt-6'>
 				<div>
 					<label className='label p-2'>
 						<span className='text-base label-text text-gray-800 dark:text-gray-200'>Current Password</span>
@@ -83,8 +89,9 @@ const ChangePassword = () => {
 						{loading ? <span className='loading loading-spinner '></span> : "Change Password"}
 					</button>
 				</div>
-			</form>
-		</>
+				</form>
+			</div>
+		</div>
 	);
 };
 export default ChangePassword;
